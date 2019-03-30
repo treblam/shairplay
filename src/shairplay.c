@@ -261,7 +261,7 @@ parse_options(shairplay_options_t *opt, int argc, char *argv[])
 
 	/* Set default values for apname and port */
 	strncpy(opt->apname, "Shairplay", sizeof(opt->apname)-1);
-	opt->port = 5000;
+	opt->port = 7000;
 	memcpy(opt->hwaddr, default_hwaddr, sizeof(opt->hwaddr));
 
 	while ((arg = *++argv)) {

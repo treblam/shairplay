@@ -297,10 +297,16 @@ dnssd_register_airplay(dnssd_t *dnssd, const char *name, unsigned short port, co
 	snprintf(features, sizeof(features)-1, "0x%x", GLOBAL_FEATURES);
 
 	dnssd->TXTRecordCreate(&txtRecord, 0, NULL);
-	dnssd->TXTRecordSetValue(&txtRecord, "deviceid", strlen(deviceid), deviceid);
-	dnssd->TXTRecordSetValue(&txtRecord, "features", strlen("0x5A7FFFF7,0xE"), "0x5A7FFFF7,0xE");
-	dnssd->TXTRecordSetValue(&txtRecord, "model", strlen(GLOBAL_MODEL), GLOBAL_MODEL);
+	dnssd->TXTRecordSetValue(&txtRecord, "deviceid", strlen("00:24:d7:b2:2e:60"), "00:24:d7:b2:2e:60");
+	dnssd->TXTRecordSetValue(&txtRecord, "features", strlen("0x5A7FFFF7,0x1E"), "0x5A7FFFF7,0x1E");
+	dnssd->TXTRecordSetValue(&txtRecord, "srcvers", strlen(GLOBAL_VERSION), GLOBAL_VERSION);
 	dnssd->TXTRecordSetValue(&txtRecord, "vv", 1, "2");
+	dnssd->TXTRecordSetValue(&txtRecord, "model", strlen(GLOBAL_MODEL), GLOBAL_MODEL);
+	dnssd->TXTRecordSetValue(&txtRecord, "flags", strlen(GLOBAL_FLAGS), GLOBAL_FLAGS);
+	//dnssd->TXTRecordSetValue(&txtRecord, "pw", strlen(GLOBAL_PW), GLOBAL_PW);
+	//dnssd->TXTRecordSetValue(&txtRecord, "rhd", strlen(GLOBAL_RHD), GLOBAL_RHD);
+	dnssd->TXTRecordSetValue(&txtRecord, "pi", strlen(GLOBAL_PI), GLOBAL_PI);
+	dnssd->TXTRecordSetValue(&txtRecord, "pk", strlen(GLOBAL_PK), GLOBAL_PK);
 
 	/* Register the service */
 	dnssd->DNSServiceRegister(&dnssd->airplayService, 0, 0,
